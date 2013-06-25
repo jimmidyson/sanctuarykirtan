@@ -1,12 +1,14 @@
-# require rubygems and sinatra so you can run this application locally with ruby app.rb
-require 'rubygems'
-require 'sinatra'
+require 'sinatra/base'
 
-get '/' do
-  "the time where this server lives is #{Time.now}
-    <br /><br />check out your <a href=\"/agent\">user_agent</a>"
-end
+class App < Sinatra::Base
+  configure do
+    enable :logging 
+    set :public_folder, ENV['RACK_ENV'] == 'production' ? 'frontend/dist' : 'frontend/app' # .tmp -> compiled app/
+  end
 
-get '/agent' do
-  "you're using #{request.user_agent}"
+  get '/api' do
+    send_file File.join(settings.public_folder, 'index.html')
+  end
+
+  run! if app_file == $0
 end

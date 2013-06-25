@@ -1,0 +1,124 @@
+<!doctype html>
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en" ng-app="kirtanApp"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" ng-app="kirtanApp"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title ng-bind="$root.pageTitle + ' | Sanctuary Kirtan'">Sanctuary Kirtan</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css /styles/main.css -->
+    <link rel="stylesheet" href="/styles/main.css">
+    <!-- endbuild -->
+    <script src="//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
+    <script>
+      WebFont.load({
+        google: {
+          families: ['Abel', 'Merienda One']
+        }
+      });
+    </script>
+    <script>
+      WebFontConfig = {
+        google: {
+          families: ['Abel', 'Merienda One']
+        },
+        timeout: 1000
+      };
+
+      (function() {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+          '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+      })();
+    </script>
+    <script src="//cdn.jsdelivr.net/foundation/4.2.2/js/vendor/custom.modernizr.js"></script>
+  </head>
+  <body>
+    <!--[if lt IE 8]>
+      <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chrome>
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+      <script src="components/es5-shim/es5-shim.js"></script>
+      <script src="components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <nav class="top-bar" ng-init="expanded=false" ng-class="{'expanded':expanded}">
+      <ul class="title-area">
+        <li class="name"><h1><a class="brand" href="/">
+          ૐ  Sanctuary Kirtan
+        </a></h1></li>
+        <li class="toggle-topbar menu-icon"><a href="#" ng-click="expanded=!expanded"><span>Menu</span></a></li>
+      </ul>
+      <section class="top-bar-section">
+        <ul class="right">
+          <li class="divider" ng-show="$root.user.id"></li>
+          <li ng-show="$root.user.id">
+            <a href="#" ng-bind="$root.user.id"></a>
+          </li>
+          <li ng-show="$root.user.id">
+            <a href="#" ng-controller="LogoutCtl" ng-click="logout()">
+              <i class="icon-signout"></i>
+              Logout
+            </a>
+          </li>
+        </ul>
+      </section>
+    </nav>
+
+    <div class="row">
+      <div ng-controller="MainCtl" ng-view class="large-8 columns"></div>
+      <div class="large-4 columns">
+        <div class="row">
+          <div class="large-12 columns">
+            <h2>Latest uploads</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-12 columns">
+            <div ng-controller="HomeCtl">
+              <div ng-repeat="upload in latestUploads">
+                <h5 ng-bind="upload.name"></h5>
+                <a class="th radius" ng-href="/watch/{{upload.href}}">
+                  <img width="420" height="315" ng-src="http://img.youtube.com/vi/{{upload.id}}/0.jpg">
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="row">
+      <div class="large-12 columns">
+        <hr/>
+        <div class="large-6 columns">
+          <p>
+            &copy; Sanctuary Kirtan 2013.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="//cdn.jsdelivr.net/foundation/4.2.2/js/vendor/zepto.js"></script>
+    <script src="//cdn.jsdelivr.net/foundation/4.2.2/js/foundation.min.js"></script>
+
+    <!-- build:js scripts/scripts.js -->
+    <script src="/components/angular/angular.js"></script>
+    <script src="/components/angular-resource/angular-resource.js"></script>
+    <script src="/components/angular-cookies/angular-cookies.js"></script>
+    <script src="/components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="/scripts/app.js"></script>
+    <script src="/scripts/kirtanApp.routes.js"></script>
+    <script src="/scripts/kirtanApp.login.js"></script>
+    <script src="/scripts/kirtanApp.home.js"></script>
+    <script src="/scripts/kirtanApp.watch.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>

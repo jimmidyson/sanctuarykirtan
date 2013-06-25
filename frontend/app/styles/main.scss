@@ -1,0 +1,44 @@
+@import "normalize";
+@import "foundation-variables";
+@import "foundation";
+
+@import "compass/css3/images";
+
+.wf-loading {
+  display: none;
+}
+
+.top-bar {
+  border-bottom: 3px solid $primary-color;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, .3);
+  ul {
+    margin-left: 0;
+  }
+}
+
+/* Add external links icons */
+a[href^="http"]:after {
+  content: "\f08e";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  text-decoration: none;
+  padding-left: 3px;
+}
+/* Strip from links to own domain or with class no_icon */
+a[href*="localhost"]:after,
+a.no_icon:after {
+  content:"" !important;
+  padding-left: 0;
+}
+
+header#homepage {
+  padding: 1.25em 0;
+  margin-top: -2.125em;
+  margin-bottom: 1.25em;
+}
+
+.orbit-container .orbit-slides-container > * .orbit-caption {
+  font-size: 1em;
+}
