@@ -3,10 +3,3 @@
 # available.  Otherwise it will execute while your application is stopped
 # before the build step.  This script gets executed directly, so it
 # could be python, php, ruby, etc.
-
-#Finally install yeoman
-command -p yeoman >/dev/null 2>&1 || {
-  echo "Installing yeoman"
-  npm install grunt-cli yo bower
-  echo "Yeoman installed"
-}
