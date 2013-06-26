@@ -26,7 +26,7 @@ routesModule.config(function($routeProvider, $locationProvider) {
     controller:   'WatchCtl',
     title:        'Watch'
   }).otherwise({
-    templateUrl:  '404',
+    templateUrl:  '/views/404.html',
     title:        'Not found'
   });
 
