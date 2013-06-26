@@ -11,7 +11,7 @@ angular.module('kirtanApp.watch', [])
       {id: 'dCXENBX38qE', name: 'Hare Krishna 3', href: 'hare-krishna-2'}
     ];
 
-    $scope.upload = {id: 'dCXENBX38qE', name: 'Hare Krishna', href: 'hare-krishna'};
+    $scope.upload = {id: 'dCXENBX38qE', name: 'Hare Krishna', href: 'hare-krishna', about: '<p>Hare Krishna rocks</p>'};
 
     $rootScope.pageTitle = 'Watch ' + $scope.upload.name;
   });
