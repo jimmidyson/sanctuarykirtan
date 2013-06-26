@@ -34,6 +34,7 @@ routesModule.config(function($routeProvider, $locationProvider) {
 
 routesModule.run(function($rootScope) {
   $rootScope.pageTitle = 'Welcome';
+
   $rootScope.$on('$routeChangeSuccess', function($event, current) {
     $rootScope.pageTitle = current.title;
   });

@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.0/css/font-awesome.min.css"/>
     <!-- build:css /styles/main.css -->
     <link rel="stylesheet" href="/styles/main.css">
     <!-- endbuild -->
@@ -41,7 +42,13 @@
   </head>
   <body>
     <!--[if lt IE 8]>
-      <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chrome>
+      <div class="row">
+        <div class="large-12 columns">
+          <div data-alert class="alert-box radius">
+            You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a>.
+          </div>
+        </div>
+      </div>
     <![endif]-->
 
     <!--[if lt IE 9]>
@@ -49,49 +56,45 @@
       <script src="components/json3/lib/json3.min.js"></script>
     <![endif]-->
 
-    <nav class="top-bar" ng-init="expanded=false" ng-class="{'expanded':expanded}">
-      <ul class="title-area">
-        <li class="name"><h1><a class="brand" href="/">
-          ૐ  Sanctuary Kirtan
-        </a></h1></li>
-        <li class="toggle-topbar menu-icon"><a href="#" ng-click="expanded=!expanded"><span>Menu</span></a></li>
-      </ul>
-      <section class="top-bar-section">
-        <ul class="right">
-          <li class="divider" ng-show="$root.user.id"></li>
-          <li ng-show="$root.user.id">
-            <a href="#" ng-bind="$root.user.id"></a>
-          </li>
-          <li ng-show="$root.user.id">
-            <a href="#" ng-controller="LogoutCtl" ng-click="logout()">
-              <i class="icon-signout"></i>
-              Logout
-            </a>
-          </li>
-        </ul>
-      </section>
-    </nav>
-
     <div class="row">
-      <div ng-controller="MainCtl" ng-view class="large-8 columns"></div>
-      <div class="large-4 columns">
-        <div class="row">
-          <div class="large-12 columns">
-            <h2>Latest uploads</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="large-12 columns">
-            <div ng-controller="HomeCtl">
-              <div ng-repeat="upload in latestUploads">
-                <h5 ng-bind="upload.name"></h5>
-                <a class="th radius" ng-href="/watch/{{upload.href}}">
-                  <img width="420" height="315" ng-src="http://img.youtube.com/vi/{{upload.id}}/0.jpg">
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="large-12 columns">
+        <h1>ૐ  Sanctuary Kirtan</h1>
+        <nav class="top-bar">
+          <section class="top-bar-section">
+            <ul class="left">
+              <li>
+                <a href="/" ><i class="icon-home"></i>Home</a>
+              </li>
+              <li>
+                <a href="/videos"><i class="icon-youtube-play"></i> Videos</a>
+              </li>
+              <li>
+                <a href="/about"><i class="icon-info"></i> About</a>
+              </li>
+            </ul>
+          </section>
+        </nav>
+      </div>
+    </div>
+    <div class="row">
+      <div ng-controller="MainCtl" ng-view class="large-12 columns"></div>
+    </div>
+    <div class="row">
+      <div class="large-12 columns">
+        <hr/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-12 columns">
+        <h2>Latest uploads</h2>
+      </div>
+    </div>
+    <div class="row" ng-controller="WatchCtl">
+      <div ng-repeat="upload in latestUploads" class="large-4 columns">
+        <h5 ng-bind="upload.name"></h5>
+        <a class="th radius" ng-href="/watch/{{upload.href}}">
+          <img width="420" height="315" ng-src="http://img.youtube.com/vi/{{upload.id}}/0.jpg">
+        </a>
       </div>
     </div>
 

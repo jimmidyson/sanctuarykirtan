@@ -3,17 +3,10 @@
 @import "foundation";
 
 @import "compass/css3/images";
+@import "compass/css3/box-shadow";
 
 .wf-loading {
   display: none;
-}
-
-.top-bar {
-  border-bottom: 3px solid $primary-color;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, .3);
-  ul {
-    margin-left: 0;
-  }
 }
 
 /* Add external links icons */
@@ -35,4 +28,25 @@ a.no_icon:after {
 
 .orbit-container .orbit-slides-container > * .orbit-caption {
   font-size: 1em;
+}
+
+.alert-box {
+  a {
+    color: $alert-font-color;
+  }
+}
+
+.top-bar {
+  @include box-shadow(rgba(0, 0, 0, .3) 1px 1px 5px);
+  ul {
+    background: $topbar-bg;
+    li > a {
+      &:hover {
+        color: $topbar-link-color-hover;
+      }
+      &:active {
+        color: $topbar-link-color-active;
+      }
+    }
+  }
 }
