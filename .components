@@ -1,0 +1,9 @@
+---
+:orm: datamapper
+:test: cucumber
+:mock: mocha
+:script: none
+:renderer: slim
+:stylesheet: compass
+:namespace: Sanctuarykirtan
+:migration_format: number
