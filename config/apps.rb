@@ -34,3 +34,5 @@ end
 
 # Mounts the core application for this project
 Padrino.mount('Sanctuarykirtan::App', :app_file => Padrino.root('app/app.rb')).to('/')
+
+Padrino.mount("Sanctuarykirtan::Admin", :app_file => File.expand_path('../../admin/app.rb', __FILE__)).to("/admin")
