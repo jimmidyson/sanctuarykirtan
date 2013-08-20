@@ -17,5 +17,5 @@ DataMapper::Property::String.length(255)
 case Padrino.env
   when :development then DataMapper.setup(:default, "sqlite3://" + Padrino.root('db', "sanctuarykirtan_development.db"))
   when :test        then DataMapper.setup(:default, "sqlite3://" + Padrino.root('db', "sanctuarykirtan_test.db"))
-  when :production  then DataMapper.setup(:default, ENV['OPENSHIFT_MYSQL_DB_URL'])
+  when :production  then DataMapper.setup(:default, "#{ENV['OPENSHIFT_MYSQL_DB_URL']}/#{'OPENSHIFT_APP_NAME'}")
 end
