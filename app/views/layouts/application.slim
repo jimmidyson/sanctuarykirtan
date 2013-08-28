@@ -6,6 +6,7 @@ html lang="en"
     meta content="width=device-width,initial-scale=1.0" name="viewport"
     meta content="" name="description"
     meta content="" name="author"
+    meta property="fb:app_id" content="#{ENV['OMNIAUTH_FACEBOOK_KEY']}"
     link href="../../assets/ico/favicon.png" rel="shortcut icon"
     title= "#{@title} | Kirtan Sanctuary"
     javascript:
@@ -31,6 +32,15 @@ html lang="en"
       | <script src="../../assets/js/html5shiv.js"></script>
       | <script src="../../assets/js/respond.min.js"></script>
   body
+    #fb-root
+    javascript:
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=715979545084593";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
     .container
       h1 ૐ  Sanctuary Kirtan
 
@@ -69,7 +79,7 @@ html lang="en"
         h2 Latest kirtans
         .row
           - for video in @latestvideos do
-            .col-md-3
+            .col-sm-4.col-md-3
               a.thumbnail.text-center href=url_for(:kirtan, :show, :short_url => video.short_url)
                 img height= "315" src="http://img.youtube.com/vi/#{video.youtube_id}/0.jpg" width="420" alt="#{video.name}"
                 h4=video.name

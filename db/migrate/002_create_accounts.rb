@@ -1,11 +1,13 @@
 migration 2, :create_accounts do
   up do
     create_table :accounts do
-      column :id, Integer, :serial => true
-      column :name, DataMapper::Property::String, :length => 255
-      column :email, DataMapper::Property::String, :length => 255
-      column :role, DataMapper::Property::String, :length => 255
-      column :provider, DataMapper::Property::String, :length => 255
+      column :id,         Integer, :serial => true
+      column :name,       String,  :length => 255
+      column :email,      String,  :length => 255
+      column :role,       String,  :length => 255
+      column :provider,   String,  :length => 255
+      column :created_at, DateTime
+      column :updated_at, DateTime
     end
   end
 

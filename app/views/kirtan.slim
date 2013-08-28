@@ -6,8 +6,6 @@ h2=@video.name
   - if !@video.description.empty?
     .col-md-4
       .row
-        .col-md-12=@video.description
-      .row
         .col-md-12
           / AddThis Button BEGIN
           .addthis_toolbox.addthis_default_style.addthis_16x16_style
@@ -18,3 +16,8 @@ h2=@video.name
             a.addthis_button_compact
           script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-521e1a4827c845ed"
           / AddThis Button END -->
+      .row
+        .col-md-12=@video.description
+.row
+  div class=(@video.description.empty? ? 'col-md-12' : 'col-md-8')
+    .fb-comments data-href=uri(current_path) data-width="470"
