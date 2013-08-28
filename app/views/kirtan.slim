@@ -4,4 +4,17 @@ h2=@video.name
     .flex-video.widescreen
       iframe width="420" height="315" src="http://www.youtube.com/embed/#{@video.youtube_id}" frameborder="0" allowfullscreen
   - if !@video.description.empty?
-    .col-md-4=@video.description
+    .col-md-4
+      .row
+        .col-md-12=@video.description
+      .row
+        .col-md-12
+          / AddThis Button BEGIN
+          .addthis_toolbox.addthis_default_style.addthis_16x16_style
+            a.addthis_button_facebook
+            a.addthis_button_twitter
+            a.addthis_button_google_plusone_share
+            a.addthis_button_pinterest_share
+            a.addthis_button_compact
+          script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-521e1a4827c845ed"
+          / AddThis Button END -->
