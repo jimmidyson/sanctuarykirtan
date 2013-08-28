@@ -18,7 +18,12 @@ html lang='en'
         div class='container'
           = link_to 'Padrino', url(:base_index), :class => 'navbar-brand', :title => 'Padrino Admin'
 
-          p.navbar-text.navbar-right
+          ul class='nav navbar-nav pull-left'
+            - project_modules.each do |project_module|
+              li class=("navbar-module #{'active' if request.path_info =~ /^#{project_module.path}/}")
+                = link_to project_module.human_name, project_module.path('/admin')
+
+          p.navbar-text.pull-right
             - if logged_in?
               ' Welcome, #{current_account.name}
               a.navbar-link href="/auth/logout"
@@ -28,11 +33,6 @@ html lang='en'
               '  Log in with:
               a.navbar-link href="/auth/facebook"
                 i.icon-facebook-sign
-
-          ul class='nav navbar-nav pull-left'
-            - project_modules.each do |project_module|
-              li class=("navbar-module #{'active' if request.path_info =~ /^#{project_module.path}/}")
-                = link_to project_module.human_name, project_module.path('/admin')
 
     div class='container main'
       div class='main-wrapper'
