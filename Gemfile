@@ -15,7 +15,6 @@ gem 'rake'
 
 # Component requirements
 gem 'bcrypt-ruby', :require => 'bcrypt'
-gem 'compass'
 gem 'slim'
 gem 'dm-sqlite-adapter'
 gem 'dm-mysql-adapter'
@@ -26,7 +25,13 @@ gem 'dm-constraints'
 gem 'dm-aggregates'
 gem 'dm-types'
 gem 'dm-core'
-gem 'zurb-foundation'
+gem 'less'
+gem 'sass'
+gem 'uglifier'
+gem 'therubyracer', :require => 'v8'
+gem 'sinatra-flash', :require => 'sinatra/flash'
+gem 'sinatra-assetpack', :require => 'sinatra/assetpack'
+gem 'omniauth-facebook'
 
 # Test requirements
 gem 'mocha', :group => 'test'

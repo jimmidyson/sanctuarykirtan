@@ -1,9 +1,22 @@
-.slideshow-wrapper
-  .preloader
-  ul data-orbit="" data-options="bullets:false;timer_speed: 5000;resume_on_mouseout: true"
-    li
-      img src="/images/orbit1.jpg"
-      .orbit-caption Let your heart sing
-    li
-      img src="/images/himalaya_fundraiser.jpg"
-      .orbit-caption Himalayan Village Fund Raiser, Sunday 14th July 2013
+.row
+  .col-md-8
+    #home-carousel.carousel.slide
+      /! Indicators
+      ol.carousel-indicators
+        li.active data-slide-to="0" data-target="#home-carousel"
+        li data-slide-to="1" data-target="#home-carousel"
+      /! Wrapper for slides
+      .carousel-inner
+        .item.active
+          == img '/images/orbit1.jpg'
+          .carousel-caption
+            h4 Let your heart sing
+        .item
+          == img '/images/himalaya_fundraiser.jpg'
+          .carousel-caption
+            h4 Himalayan Village Fund Raiser, Sunday 14th July 2013
+      /! Controls
+      a.left.carousel-control data-slide="prev" href="#home-carousel"
+        span.icon-prev
+      a.right.carousel-control data-slide="next" href="#home-carousel"
+        span.icon-next

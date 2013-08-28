@@ -22,19 +22,16 @@ module Sanctuarykirtan
     #
 
     set :admin_model, 'Account'
-    set :login_page,  '/admin/sessions/new'
-
-    enable  :sessions
-    disable :store_location
+    set :login_page,  '/auth/facebook'
 
     access_control.roles_for :any do |role|
       role.protect '/'
-      role.allow   '/sessions'
     end
 
-    access_control.roles_for :admin do |role|
-    role.project_module :videos, '/videos'
-    role.project_module :accounts, '/accounts'
+    access_control.roles_for :admins do |role|
+      role.allow '/'
+      role.project_module :videos, '/videos'
+      role.project_module :accounts, '/accounts'
     end
 
     # Custom error management 

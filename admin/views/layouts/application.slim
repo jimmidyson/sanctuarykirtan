@@ -18,10 +18,16 @@ html lang='en'
         div class='container'
           = link_to 'Padrino', url(:base_index), :class => 'navbar-brand', :title => 'Padrino Admin'
 
-          ul class='nav navbar-nav pull-right'
-            li class='navbar-edit-account' = link_to tag_icon(:user), url(:accounts, :edit, :id => current_account.id), :title => pat(:profile), :class => 'navbar-nav-link'
-            li class='navbar-logout' = button_to(pat(:logout), url(:sessions, :destroy), :method => :delete, :class => 'navbar-nav-form') do
-              = content_tag :button, tag_icon(:off), :type => :submit, :title => pat(:logout), :class => 'navbar-nav-form-link'
+          p.navbar-text.navbar-right
+            - if logged_in?
+              ' Welcome, #{current_account.name}
+              a.navbar-link href="/auth/logout"
+                i.icon-signout<
+            - else
+              i.icon-signin<
+              '  Log in with:
+              a.navbar-link href="/auth/facebook"
+                i.icon-facebook-sign
 
           ul class='nav navbar-nav pull-left'
             - project_modules.each do |project_module|

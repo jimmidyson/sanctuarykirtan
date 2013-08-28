@@ -6,4 +6,10 @@
 
 require File.expand_path("../config/boot.rb", __FILE__)
 
+if Padrino.env == :development
+  require 'rack-livereload'
+
+  use Rack::LiveReload
+end
+
 run Padrino.application

@@ -1,9 +1,7 @@
+h2=@video.name
 .row
-  .large-12.columns
-    h2=@video.name
-.row
-  .large-8.columns
+  div class=(@video.description.empty? ? 'col-md-12' : 'col-md-8')
     .flex-video.widescreen
       iframe width="420" height="315" src="http://www.youtube.com/embed/#{@video.youtube_id}" frameborder="0" allowfullscreen
   - if !@video.description.empty?
-    .large-4.columns=@video.description
+    .col-md-4=@video.description

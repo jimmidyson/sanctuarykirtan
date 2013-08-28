@@ -26,8 +26,9 @@
 # override these settings in the subapps as needed.
 #
 Padrino.configure_apps do
-  # enable :sessions
-  set :session_secret, '12f5b2f92ba819951e4c36f96441490b9528137c634e21f584aa77ec19953c24'
+  enable :sessions
+  enable :store_location
+  set :session_id => "_padrino_#{File.basename(Padrino.root)}_sanctuarykirtan".to_sym
   set :protection, true
   set :protect_from_csrf, true
 end

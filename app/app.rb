@@ -1,11 +1,41 @@
+require 'sinatra/assetpack'
+
 module Sanctuarykirtan
   class App < Padrino::Application
     register Padrino::Rendering
     register Padrino::Mailer
     register Padrino::Helpers
-    register CompassInitializer
+    register Sinatra::AssetPack
+    register Padrino::Admin::AccessControl
 
-    enable :sessions
+    use OmniAuth::Builder do
+      provider :facebook, '715979545084593', 'e060251053075044a175b0aa558d3d18',
+        {
+          :scope => 'email',
+          :display => 'popup'
+        }
+    end
+
+    Less.paths << File.join(root, 'css') << File.join(root, 'css/bootstrap')
+
+    assets {
+      serve '/js',     from: 'js'        # Default
+      serve '/css',    from: 'css'       # Default
+      serve '/images', from: 'images'    # Default
+
+      prebuild true
+
+      js_compression  :uglify
+      css_compression :sass
+
+      css :sk, '/css/sk.css', [
+        '/css/application.css'
+      ]
+
+      js :sk, '/js/sk.js', [
+        '/js/bootstrap.min.js'
+      ]
+    }
 
     before do
       @latestvideos = Video.all(:order => :created_on, :limit => 6)
@@ -24,16 +54,6 @@ module Sanctuarykirtan
     get :index do
       @title = 'Welcome'
       render 'home'
-    end
-
-    get :kirtan, :with => :short_url do
-      @video = Video.first(:short_url => params[:short_url])
-      if !@video
-        not_found
-      else
-        @title = @video.name
-        render 'kirtan'
-      end
     end
 
   end
