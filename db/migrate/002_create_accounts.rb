@@ -3,10 +3,9 @@ migration 2, :create_accounts do
     create_table :accounts do
       column :id, Integer, :serial => true
       column :name, DataMapper::Property::String, :length => 255
-      column :surname, DataMapper::Property::String, :length => 255
       column :email, DataMapper::Property::String, :length => 255
-      column :crypted_password, DataMapper::Property::String, :length => 255
       column :role, DataMapper::Property::String, :length => 255
+      column :provider, DataMapper::Property::String, :length => 255
     end
   end
 
