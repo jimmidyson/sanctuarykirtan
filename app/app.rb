@@ -9,7 +9,7 @@ module Sanctuarykirtan
     register Padrino::Admin::AccessControl
 
     use OmniAuth::Builder do
-      provider :facebook, '715979545084593', 'e060251053075044a175b0aa558d3d18',
+      provider :facebook, ENV['OMNIAUTH_FACEBOOK_KEY'], ENV['OMNIAUTH_FACEBOOK_SECRET'],
         {
           :scope => 'email',
           :display => 'popup'
