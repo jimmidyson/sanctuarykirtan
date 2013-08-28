@@ -7,6 +7,9 @@ module Sanctuarykirtan
     register Padrino::Helpers
     register Sinatra::AssetPack
     register Padrino::Admin::AccessControl
+    register Padrino::Cache
+
+    enable :caching
 
     use OmniAuth::Builder do
       provider :facebook, ENV['OMNIAUTH_FACEBOOK_KEY'], ENV['OMNIAUTH_FACEBOOK_SECRET'],

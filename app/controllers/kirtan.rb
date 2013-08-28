@@ -1,4 +1,4 @@
-Sanctuarykirtan::App.controllers :kirtan do
+Sanctuarykirtan::App.controllers :kirtan, :cache => true do
 
   get :index do
     'Hello world!'
